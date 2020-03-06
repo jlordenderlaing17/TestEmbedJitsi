@@ -3,20 +3,54 @@
     <head>
         <title>embedTest</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://meet.jit.si/external_api.js"></script>
-        <script>
+        <script src="https://meet.jit.si/libs/lib-jitsi-meet.min.js"></script>
+        <script src="./example.js"></script>
+        <!-- <script>
             //once the scripts are loaded:
             $(document).ready(function(){
                 var domain = "meet.jit.si";//name of backend server for meetings
-                var options = {
-                    roomName: "sussussussus",//custom name for joining
-                    width: 640,
-                    height: 480,
-                    parentNode: document.querySelector('#meet')
+                var options ={
+                    hosts: {
+                        domain: "https://beta.meet.jit.si",
+                        muc: "conference.beta.meet.jit.si"
+                    },
+                    bosh: "//beta.meet.jit.si/http-bind",
+                    clientNode: "https://beta.meet.jit.si"
                 }
-                var api = new JitsiMeetExternalAPI(domain, options);
+                var initOptions = {
+                    useIPv6: true, //think it's a default internet connection thing
+                    desktopSharingChromeExtId: 'mbocklcggfhnbahlnepmldehdhpjfcjp',// fix
+                    desktopSharingChromeDisabled: false, 
+                    desktopSharingChromeSources: ['screen', 'window'],// analyze some more,
+                    desktopSharingChromeMinExtVersion: '0.1',
+                    desktopSharingFirefoxDisabled: false,
+                    disableAudioLevels: false,
+                    disableSimulcast: false, 
+                    enableWindowOnErrorHandler: false,
+                    disableThirdPartyRequests: true, //not sure what this dues, has something to do with a thing called callstats
+                    enableAnalyticsLogging: true,
+                    //  settings from earlier:
+                    // roomName: "sussussussus",//custom name for joining
+                    // width: 640,
+                    // height: 480,
+                    // parentNode: document.querySelector('#meet')
+                };
+                const confOptions = {
+                    openBridgeChannel: true
+                };
+
+                let connection = null;
+                let isJoined = false;
+                let room = null;
+
+                let localTracks = [];
+                const remoteTracks = {};
+
+                //var api = new JitsiMeetExternalAPI(domain, options);
+                JitsiMeetJS.init(initOptions);
+
             });
-        </script>
+        </script> -->
     </head>
     <body>
         <h1>Test meeting</h1>
@@ -24,5 +58,14 @@
                 <!-- ID for jquery to reference -->
                 meeting
             </div>
+
+            <a href="#" onclick="unload()">Unload</a>
+    <a href="#" onclick="switchVideo()">switchVideo</a>
+    <div id="audioOutputSelectWrapper" style="display: none;">
+        Change audio output device
+        <select id="audioOutputSelect" onchange="changeAudioOutput(this)"></select>
+    </div>
+    <!-- <video id="localVideo" autoplay="true"></video> -->
+    <!--<audio id="localAudio" autoplay="true" muted="true"></audio>-->
     </body>
 </html>
