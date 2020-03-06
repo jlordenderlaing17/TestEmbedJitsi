@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Homah</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://meet.jit.si/external_api.js"></script>
+        <script>
+            //once the scripts are loaded:
+            $(document).ready(function(){
+                var domain = "meet.jit.si";//name of backend server for meetings
+                var options = {
+                    roomName: "sussussussus",//custom name for joining
+                    width: 640,
+                    height: 480,
+                    parentNode: document.querySelector('#meet')
+                }
+                var api = new JitsiMeetExternalAPI(domain, options);
+            });
+        </script>
+    </head>
+    <body>
+        <h1>sus</h1>
+            <div id="meet">
+                meetonmg
+            </div>
+    </body>
+</html>
