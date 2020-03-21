@@ -258,8 +258,10 @@ const initOptions = {
 };
 
 JitsiMeetJS.init(initOptions);
+// This part renders the image you see ^^^^
 
 connection = new JitsiMeetJS.JitsiConnection(null, null, options);
+// renders image and sets settings for devices/audio etc
 
 connection.addEventListener(
     JitsiMeetJS.events.connection.CONNECTION_ESTABLISHED,
